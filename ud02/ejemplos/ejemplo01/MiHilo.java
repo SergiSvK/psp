@@ -11,7 +11,7 @@ class MiHilo extends Thread {
         //Como ExtendThread extiende de Thread, puede llamar directamente 
         //a todos los métodos de Thread, incluido el método getName().
         try {
-            for (int cont=0;cont<10;cont++) {
+            for (int cont=0;cont < 10;cont++) {
                 Thread.sleep(400);
                 System.out.println("En " + getName() + ", el recuento es " + cont);
             }
