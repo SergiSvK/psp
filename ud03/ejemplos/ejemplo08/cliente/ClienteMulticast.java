@@ -13,6 +13,7 @@ public class ClienteMulticast {
     
     // Nos unimos al grupo de multidifusión
     InetAddress grupo = InetAddress.getByName("225.0.0.1");
+    
     ms.joinGroup(grupo);
     System.out.println("Unido al grupo de multidifusión " + grupo);
     System.out.println("Esperando mensajes de multidifusión...");
