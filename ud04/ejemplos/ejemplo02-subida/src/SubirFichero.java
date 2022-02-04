@@ -66,6 +66,8 @@ public class SubirFichero {
 			} else {
 				System.out.println("No se ha podido subir el fichero " + archivo +": " + ftpClient.getReplyString());
 			}
+			
+			//cerrar el stream
 			in.close();
 
 			// cerrar sesión

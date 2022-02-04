@@ -24,3 +24,4 @@ hs_err_pid*
 
 #proyectos de VS Code
 .vscode
+/ud04/ejemplos/ejemplo05-clienteGUI/clienteFTPBasico/target/
