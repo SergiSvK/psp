@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
@@ -22,11 +22,4 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-<<<<<<< HEAD
-#proyectos de VS Code
-.vscode
-/ud04/ejemplos/ejemplo05-clienteGUI/clienteFTPBasico/target/
-=======
-#proyectos de VScode
-.vscode
->>>>>>> 88d4c50bdccb81c35d2d366992bf46474fa475c1
+
