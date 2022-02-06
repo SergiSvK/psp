@@ -46,7 +46,7 @@ public class SubirFichero {
 			String directorio = "subidas";
 			if (!ftpClient.changeWorkingDirectory(directorio)) {
 				if (ftpClient.makeDirectory(directorio)) {
-					System.out.println("Directorio :  " + directorio + " creado: " + ftpClient.getReplyString());					
+					System.out.println("Directorio :  " + directorio + " creado: -" + ftpClient.getReplyString());					
 				} else {
 					System.out.println("No se ha podido crear el directorio de subidas: " + ftpClient.getReplyString());
 					System.exit(0);

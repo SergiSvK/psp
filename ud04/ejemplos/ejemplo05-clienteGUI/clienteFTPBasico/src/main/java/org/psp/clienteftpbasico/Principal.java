@@ -7,10 +7,11 @@ import java.io.IOException;
  * @author ruben
  */
 public class Principal {
-    
-    public static void main(String[] args) throws IOException {
-        ClienteFTPBasico cliente = new ClienteFTPBasico("localhost","pruebasftp","SMX2019*","/");
+
+    public static void main(String[] args) {
+        InterfazClienteFTP cliente = new InterfazClienteFTP();
+        cliente.conectar("localhost", "pruebasftp", "SMX2019*", "/");
         cliente.setVisible(true);
     }
-    
+
 }
