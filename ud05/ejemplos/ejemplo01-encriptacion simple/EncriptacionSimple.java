@@ -1,21 +1,20 @@
-import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class EncriptacionSimple {
-    
-    public static byte[] Encriptar(String textoUTF8,byte[] clave) throws GeneralSecurityException, UnsupportedEncodingException {
-
-        return Encriptar(textoUTF8.getBytes("UTF-8"),clave);
-    }    
-
-    public static byte[] Desencriptar(String textoEncriptado,byte[] clave) throws GeneralSecurityException, UnsupportedEncodingException {
-
-        return Desencriptar(textoEncriptado.getBytes("UTF-8"),clave);
-    }
-    
+/**
+ * Encriptación y desencriptación simple usando AES
+ */
+public class EncriptacionSimple {   
+        
+    /**
+     * Encripta el texto usando la clave indicada
+     * @param texto texto a encriptar
+     * @param clave clave de encriptación
+     * @return texto encriptado
+     * @throws GeneralSecurityException
+     */
     public static byte[] Encriptar(byte[] texto,byte[] clave) throws GeneralSecurityException {
 
         //selección del algoritmo a usar, en este caso el AES de criptografía simétrica
@@ -27,6 +26,13 @@ public class EncriptacionSimple {
         return cipher.doFinal(texto);
     }
 
+    /**
+     * Desencripta el texto usando la clave indicada
+     * @param textoEncriptado texto a desencriptar
+     * @param clave clave de encriptación
+     * @return texto desencriptado
+     * @throws GeneralSecurityException
+     */
     public static byte[] Desencriptar(byte[] textoEncriptado,byte[] clave) throws GeneralSecurityException {
 
         //selección del algoritmo a usar, en este caso el AES de criptografía simétrica
@@ -37,21 +43,4 @@ public class EncriptacionSimple {
         //desencriptación del texto suministrado
         return cipher.doFinal(textoEncriptado);
     }
-/*
-    public static String EncriptarATexto(String textoUTF8, byte[] keyBytes ) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
-        
-        byte[] cipherText = Encriptar(textoUTF8,keyBytes);
-
-        return Base64.getEncoder().encodeToString(cipherText);
-    }
-
-    public static String DesencriptarTexto(String textoBase64, byte[] keyBytes ) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
-        
-        byte[] decodedBytes = Base64.getDecoder().decode(textoBase64);
-
-        byte[] cipherText = Desencriptar(decodedBytes.toString(),keyBytes);
-
-        return Base64.getEncoder().encodeToString(cipherText);
-    }
-    */
 }
