@@ -17,9 +17,13 @@ public class EncriptacionSimple {
      */
     public static byte[] Encriptar(byte[] texto,byte[] clave) throws GeneralSecurityException {
 
+        //validación de la longitud de la clave
+        if (clave.length != 16) {
+            throw new IllegalArgumentException("Longitud de clave inválida");
+        }
         //selección del algoritmo a usar, en este caso el AES de criptografía simétrica
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-        //definición de la clave e inicialización
+        //definición de la clave e inicialización,  el IvParameterSpec es el vector de inicialización
         SecretKeySpec key = new SecretKeySpec(clave, "AES");
         cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(new byte[16]));
         //encriptación del texto suministrado
@@ -35,6 +39,10 @@ public class EncriptacionSimple {
      */
     public static byte[] Desencriptar(byte[] textoEncriptado,byte[] clave) throws GeneralSecurityException {
 
+        //validación de la longitud de la clave
+        if (clave.length != 16) {
+            throw new IllegalArgumentException("Longitud de clave inválida");
+        }
         //selección del algoritmo a usar, en este caso el AES de criptografía simétrica
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         //definición de la clave e inicialización
@@ -43,4 +51,6 @@ public class EncriptacionSimple {
         //desencriptación del texto suministrado
         return cipher.doFinal(textoEncriptado);
     }
+
+    
 }
