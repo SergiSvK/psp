@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * Encriptación y desencriptación simple usando AES
  */
-public class EncriptacionSimple {   
+public class EncriptadorSimetrico {   
         
     /**
      * Encripta el texto usando la clave indicada
