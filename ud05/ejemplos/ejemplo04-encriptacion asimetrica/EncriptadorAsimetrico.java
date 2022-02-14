@@ -1,6 +1,9 @@
 import java.security.*;
 import javax.crypto.*;
 
+/**
+ * Encriptación de textos usando criptografía asimétrica
+ */
 public class EncriptadorAsimetrico {
 
 	/**
