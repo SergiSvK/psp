@@ -12,6 +12,7 @@ public class Inicio {
             System.out.println("- " + provider.getName() + ": " + provider.getInfo());
         }
 
+        //solicitar el texto del usuario
         System.out.print("Introduce el texto a encriptar: ");
         Scanner scanner = new Scanner(System.in);
         String texto = scanner.nextLine();

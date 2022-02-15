@@ -10,8 +10,8 @@ public class ObtenerResumen {
 			byte dataBytes[] = Files.readAllBytes(Paths.get("documento.txt"));
 			//generar el resumen
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			md.update(dataBytes);// TEXTO A RESUMIR
-			byte resumen[] = md.digest(); // SE CALCULA EL RESUMEN
+			md.update(dataBytes);// introducir texto a resumir
+			byte resumen[] = md.digest(); // calcular el resumen
 			
 			//se escribe el resumen en disco
 			FileOutputStream fileout = new FileOutputStream("resumen.dat");

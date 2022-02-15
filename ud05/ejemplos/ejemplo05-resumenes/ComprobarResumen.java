@@ -13,9 +13,10 @@ public class ComprobarResumen {
 			byte dataBytes[] = Files.readAllBytes(Paths.get("documento.txt"));
 			//generar el resumen
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			md.update(dataBytes);// TEXTO A RESUMIR
-			byte resumenActual[] = md.digest(); // SE CALCULA EL RESUMEN
+			md.update(dataBytes); //introducir texto a resumir
+			byte resumenActual[] = md.digest(); // calcular el resumen
 
+			//validación de integridad
 			if (MessageDigest.isEqual(resumenActual, resumenOriginal)) {
 				System.out.println("Datos válidos");
 			}
