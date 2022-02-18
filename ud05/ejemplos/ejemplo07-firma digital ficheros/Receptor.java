@@ -16,7 +16,7 @@ public class Receptor {
      * @param ficheroRecibido fichero recibido
      * @param clavePublica clave pública del emisor
      * @param ficheroFirma fichero que contiene la firma del fichero recibido
-     * @return
+     * @return verdadero si la firma es válida y falso en otro caso
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeyException
      * @throws SignatureException
