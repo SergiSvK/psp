@@ -1,6 +1,8 @@
 import java.io.*;
+import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 
 import javax.net.ssl.*;
 
@@ -18,7 +20,7 @@ public class ServidorTLS {
 		KeyStore almacen = KeyStore.getInstance(KeyStore.getDefaultType());
 		almacen.load(new FileInputStream("servidor.jks"), claveAlmacen.toCharArray());
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-		kmf.init(almacen, claveAlmacen.toCharArray());
+		kmf.init(almacen, claveAlmacen.toCharArray());		
 
 		// preparamos el acceso al almacén de confianza
 		KeyStore almacenConfianza = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -44,10 +46,23 @@ public class ServidorTLS {
 			System.out.println("Esperando al cliente " + i);
 
 			SSLSocket clienteConectado = (SSLSocket) serverSocket.accept();
-
-			flujoEntrada = new DataInputStream(clienteConectado.getInputStream());
+			//mostrar información del cliente conectado
+			System.out.println("Información de sesión del cliente " + i);
+			SSLSession session = clienteConectado.getSession();	 
+			System.out.println("Host: "+session.getPeerHost());
+			System.out.println("Cifrado: " + session.getCipherSuite());
+			System.out.println("Protocolo: " + session.getProtocol());
+			System.out.println("IDentificador:" + new BigInteger(session.getId()));
+			System.out.println("Creación de la sesión: " + session.getCreationTime());
+			X509Certificate certificate = (X509Certificate)session.getLocalCertificates()[0];
+			System.out.println("Propietario:    "+certificate.getSubjectDN());
+			System.out.println("Algoritmo:    "+certificate.getSigAlgName());
+			System.out.println("Tipo:    "+certificate.getType());
+			System.out.println("Emisor:    "+certificate.getIssuerDN());
+			System.out.println("Número Serie: "+certificate.getSerialNumber());
 
 			// Esperamos recibir algo del cliente
+			flujoEntrada = new DataInputStream(clienteConectado.getInputStream());
 			System.out.println("Recibiendo del CLIENTE: " + i + " \n\t" + flujoEntrada.readUTF());
 
 			// respondemos al cliente
