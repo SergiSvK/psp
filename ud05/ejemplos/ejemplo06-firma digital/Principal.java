@@ -19,7 +19,7 @@ public class Principal {
 			byte[] firma = emisor.FirmarMensaje(mensaje, keyPair.getPrivate());
 
 			//El emisor le pasa su clave publica al receptor, el mensaje y la firma
-			String mensajeRecibido = mensaje;
+			String mensajeRecibido = mensaje + "kk";
 			//mensajeRecibido += "esto es para que no se verifique";
 			Receptor receptor = new Receptor();
 			boolean check = receptor.VerificarFirma(mensajeRecibido, keyPair.getPublic(), firma);
